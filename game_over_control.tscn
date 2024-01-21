@@ -1,0 +1,116 @@
+[gd_scene load_steps=8 format=3 uid="uid://d4ljmen7pygfl"]
+
+[ext_resource type="Script" path="res://game_over_control.gd" id="1_4uycc"]
+[ext_resource type="PackedScene" uid="uid://cqjowqqvo6t6e" path="res://good_job_star.tscn" id="1_jfx15"]
+
+[sub_resource type="Theme" id="Theme_bb35y"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_303bi"]
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_hj375"]
+font_size = 42
+
+[sub_resource type="Theme" id="Theme_wf5yl"]
+Label/styles/normal = null
+
+[sub_resource type="LabelSettings" id="LabelSettings_pketf"]
+font_size = 48
+font_color = Color(1, 0.572549, 0, 1)
+outline_size = 5
+
+[node name="GameOverControl" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_4uycc")
+
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 321.0
+offset_top = 90.0
+offset_right = 969.0
+offset_bottom = 669.0
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 326.0
+offset_top = 119.0
+offset_right = 968.0
+offset_bottom = 543.0
+theme = SubResource("Theme_bb35y")
+
+[node name="LevelCompletedLabel" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 47.0
+offset_top = -63.0
+offset_right = 581.0
+offset_bottom = 25.0
+text = "Level Completed!"
+label_settings = SubResource("LabelSettings_303bi")
+
+[node name="NewHighscoreLabel" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 130.0
+offset_top = 75.0
+offset_right = 677.0
+offset_bottom = 163.0
+text = "NEW HIGHSCORE!"
+label_settings = SubResource("LabelSettings_hj375")
+
+[node name="GoodJobStar" parent="Panel" instance=ExtResource("1_jfx15")]
+position = Vector2(165, 198)
+
+[node name="GoodJobStar2" parent="Panel" instance=ExtResource("1_jfx15")]
+position = Vector2(319, 203)
+
+[node name="GoodJobStar3" parent="Panel" instance=ExtResource("1_jfx15")]
+position = Vector2(471, 209)
+
+[node name="GameOverScoreLabel" type="Label" parent="Panel"]
+light_mask = 0
+z_index = 4096
+z_as_relative = false
+layout_mode = 0
+offset_left = 176.0
+offset_top = 13.0
+offset_right = 442.0
+offset_bottom = 80.0
+theme = SubResource("Theme_wf5yl")
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+text = "0"
+label_settings = SubResource("LabelSettings_pketf")
+horizontal_alignment = 1
+
+[node name="BackToMainMenuButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 359.0
+offset_top = 412.0
+offset_right = 516.0
+offset_bottom = 513.0
+text = "Back to Main Menu"
+
+[node name="TryAgainButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 544.0
+offset_top = 410.0
+offset_right = 743.0
+offset_bottom = 513.0
+text = "Try Again"
+
+[node name="NextLevelButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 761.0
+offset_top = 413.0
+offset_right = 960.0
+offset_bottom = 516.0
+text = "Next Level >>"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="pressed" from="BackToMainMenuButton" to="." method="_on_back_to_main_menu_button_pressed"]
+[connection signal="pressed" from="TryAgainButton" to="." method="_on_try_again_button_pressed"]
+[connection signal="pressed" from="NextLevelButton" to="." method="_on_next_level_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

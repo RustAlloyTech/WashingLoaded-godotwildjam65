@@ -1,0 +1,232 @@
+[gd_scene load_steps=18 format=3 uid="uid://6m2carv1obnh"]
+
+[ext_resource type="Script" path="res://Player/player.gd" id="1_tkht2"]
+[ext_resource type="Texture2D" uid="uid://diqsv7st333ko" path="res://Inkscape/spritesheet_PlayerBody.png" id="2_mrync"]
+[ext_resource type="Texture2D" uid="uid://xinsjjjwb4by" path="res://Inkscape/spritesheet_PlayerHead.png" id="3_t8n0a"]
+[ext_resource type="Texture2D" uid="uid://d4h7smak8vi6y" path="res://Inkscape/spritesheet_PlayerLeg1.png" id="4_airu7"]
+[ext_resource type="Texture2D" uid="uid://d2fb8i6c4h0s2" path="res://Inkscape/spritesheet_PlayerLeg2.png" id="5_qj5pa"]
+[ext_resource type="Texture2D" uid="uid://dqs70c4o5kaj0" path="res://Inkscape/spritesheet_PlayerHand2.png" id="6_gckv4"]
+[ext_resource type="Texture2D" uid="uid://c6tcgs4ps5fs8" path="res://Inkscape/spritesheet_PlayerHand1.png" id="7_wt708"]
+[ext_resource type="Texture2D" uid="uid://bfpunwifjllc" path="res://light_gradient.tres" id="8_4c47o"]
+[ext_resource type="Animation" uid="uid://bk6m2phxjbtkk" path="res://Idle.res" id="8_4vxu7"]
+[ext_resource type="Animation" uid="uid://bmiuqf758n5x4" path="res://Walking.res" id="9_5ll3n"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lffbe"]
+radius = 19.0
+height = 62.0
+
+[sub_resource type="Animation" id="Animation_jbv0l"]
+resource_name = "Dancing_1"
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:rotation")
+tracks/0/interp = 4
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body/Leg1Container/Leg1:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-10, 0), Vector2(0, 0), Vector2(1.145, -3)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body/Leg2Container/Leg2:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(3, -12), Vector2(8, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Body/BodyContainer/Body:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.85),
+"transitions": PackedFloat32Array(1, 1, 0.329877),
+"update": 0,
+"values": [Vector2(0, 0.515233), Vector2(7, 3), Vector2(0.734, 0.863)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Body:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Body/HeadContainer/Head:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -1.2), Vector2(0, -1.2), Vector2(-7, -5.8)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Body/Hands/Hand1Container/SpritesheetPlayerHand1:position")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-16.0332, -23.7473)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Body/Hands/Hand2Container/SpritesheetPlayerHand2:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.05, 0.65),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(7.88894, -1.66273), Vector2(14.5288, -18.2733)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bwvwr"]
+_data = {
+"Dancing_1": SubResource("Animation_jbv0l"),
+"Idle": ExtResource("8_4vxu7"),
+"Walking": ExtResource("9_5ll3n")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_48odb"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mp62y"]
+animation = &"Walking"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_4ldse"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_48odb")
+blend_point_0/pos = -1.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_mp62y")
+blend_point_1/pos = 1.0
+value_label = "x"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2klay"]
+radius = 70.0
+
+[node name="Player" type="CharacterBody2D"]
+light_mask = 3
+z_index = 200
+position = Vector2(652, 209)
+collision_mask = 9
+script = ExtResource("1_tkht2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1000
+position = Vector2(-1, 40)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_lffbe")
+
+[node name="Body" type="Node2D" parent="."]
+modulate = Color(0.811765, 0.333333, 0.811765, 1)
+
+[node name="BodyContainer" type="Node2D" parent="Body"]
+position = Vector2(-2, 7)
+
+[node name="Body" type="Sprite2D" parent="Body/BodyContainer"]
+texture = ExtResource("2_mrync")
+
+[node name="HeadContainer" type="Node2D" parent="Body"]
+position = Vector2(0, -34.2)
+
+[node name="Head" type="Sprite2D" parent="Body/HeadContainer"]
+position = Vector2(0, -1.2)
+texture = ExtResource("3_t8n0a")
+
+[node name="Leg1Container" type="Node2D" parent="Body"]
+position = Vector2(-18, 38)
+
+[node name="Leg1" type="Sprite2D" parent="Body/Leg1Container"]
+position = Vector2(-10, 0)
+texture = ExtResource("4_airu7")
+
+[node name="Leg2Container" type="Node2D" parent="Body"]
+position = Vector2(19, 39)
+
+[node name="Leg2" type="Sprite2D" parent="Body/Leg2Container"]
+texture = ExtResource("5_qj5pa")
+
+[node name="Hands" type="Node2D" parent="Body"]
+rotation = 0.0833715
+
+[node name="Hand1Container" type="Node2D" parent="Body/Hands"]
+position = Vector2(-36.0016, 0.939137)
+
+[node name="SpritesheetPlayerHand1" type="Sprite2D" parent="Body/Hands/Hand1Container"]
+texture = ExtResource("7_wt708")
+
+[node name="Hand2Container" type="Node2D" parent="Body/Hands"]
+position = Vector2(34.9493, -1.88386)
+
+[node name="SpritesheetPlayerHand2" type="Sprite2D" parent="Body/Hands/Hand2Container"]
+position = Vector2(8.71892, -3.73905)
+texture = ExtResource("6_gckv4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bwvwr")
+}
+autoplay = "Idle"
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+active = false
+libraries = {
+"": SubResource("AnimationLibrary_bwvwr")
+}
+tree_root = SubResource("AnimationNodeBlendSpace1D_4ldse")
+anim_player = NodePath("../AnimationPlayer")
+parameters/blend_position = 0.5
+
+[node name="Holder" type="Node2D" parent="."]
+
+[node name="HolderArea" type="Area2D" parent="Holder"]
+position = Vector2(50, 0)
+collision_layer = 66
+collision_mask = 66
+
+[node name="ItemHolding" type="Node2D" parent="Holder/HolderArea"]
+
+[node name="InteractCollision" type="CollisionShape2D" parent="Holder/HolderArea"]
+position = Vector2(-30, 0)
+shape = SubResource("CircleShape2D_2klay")
+
+[node name="PointLight2D" type="PointLight2D" parent="Holder/HolderArea"]
+scale = Vector2(2, 2)
+color = Color(0.384314, 1, 0.380392, 1)
+blend_mode = 1
+texture = ExtResource("8_4c47o")

@@ -1,0 +1,353 @@
+[gd_scene load_steps=30 format=3 uid="uid://bwdm51iqlcum2"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_8ckga"]
+[ext_resource type="Texture2D" uid="uid://diqsv7st333ko" path="res://Inkscape/spritesheet_PlayerBody.png" id="1_mc4a4"]
+[ext_resource type="Texture2D" uid="uid://c6tcgs4ps5fs8" path="res://Inkscape/spritesheet_PlayerHand1.png" id="2_3m5wx"]
+[ext_resource type="Texture2D" uid="uid://dqs70c4o5kaj0" path="res://Inkscape/spritesheet_PlayerHand2.png" id="3_f20pi"]
+[ext_resource type="Texture2D" uid="uid://d4h7smak8vi6y" path="res://Inkscape/spritesheet_PlayerLeg1.png" id="4_6my6p"]
+[ext_resource type="Texture2D" uid="uid://d2fb8i6c4h0s2" path="res://Inkscape/spritesheet_PlayerLeg2.png" id="5_35htc"]
+[ext_resource type="Texture2D" uid="uid://xinsjjjwb4by" path="res://Inkscape/spritesheet_PlayerHead.png" id="6_rm1gt"]
+[ext_resource type="PackedScene" uid="uid://dxjg3j7srid5j" path="res://Clothes/jeans.tscn" id="8_asych"]
+[ext_resource type="Texture2D" uid="uid://1lmh1aia3h7i" path="res://Inkscape/spritesheet_WashingMachine.png" id="9_viebq"]
+[ext_resource type="Script" path="res://washing_machine.gd" id="9_ygwom"]
+[ext_resource type="Texture2D" uid="uid://t8wgia8g0ws1" path="res://Inkscape/spritesheet_WashingMachine_Door.png" id="10_qt8vu"]
+[ext_resource type="Texture2D" uid="uid://clig2damoxdm6" path="res://Inkscape/spritesheet_WashingMachine_LoadedLed.png" id="11_11s7g"]
+[ext_resource type="Texture2D" uid="uid://ctoyjlowe75m" path="res://Inkscape/spritesheet_WashingMachine_LoadedLed_Green.png" id="13_p8yys"]
+[ext_resource type="Texture2D" uid="uid://bhxonqyioy1fi" path="res://Inkscape/spritesheet_WashingMachine_LoadedLed_Yellow.png" id="14_8poho"]
+[ext_resource type="Texture2D" uid="uid://cm2d086qwheam" path="res://Inkscape/spritesheet_WashingMachine_LoadedLed_Red.png" id="15_ht1xu"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lffbe"]
+radius = 19.0
+height = 56.0
+
+[sub_resource type="Animation" id="Animation_sdwbp"]
+resource_name = "Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/BodyContainer/Body:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body/HeadContainer/Head:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -2)]
+}
+
+[sub_resource type="Animation" id="Animation_svesv"]
+resource_name = "Walking"
+length = 0.6
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:rotation")
+tracks/0/interp = 4
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.174533, 0.0, 0.174533]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body/Leg1Container/Leg1:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 5), Vector2(0, 0), Vector2(0, -5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body/Leg2Container/Leg2:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -5), Vector2(0, 0), Vector2(0, 5)]
+}
+
+[sub_resource type="Animation" id="Animation_sd1fj"]
+resource_name = "head_bobbing"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/HeadContainer/Head:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(3, -39), Vector2(-2.99999, -41), Vector2(-6, -38), Vector2(-2.99999, -41)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bwvwr"]
+_data = {
+"Idle": SubResource("Animation_sdwbp"),
+"Walking": SubResource("Animation_svesv"),
+"head_bobbing": SubResource("Animation_sd1fj")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pnhvm"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_enqhq"]
+animation = &"Walking"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_4ldse"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_pnhvm")
+blend_point_0/pos = -1.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_enqhq")
+blend_point_1/pos = 1.0
+value_label = "x"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2klay"]
+radius = 70.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wkq57"]
+size = Vector2(130, 109)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7t853"]
+size = Vector2(59, 51)
+
+[sub_resource type="Animation" id="Animation_ie8ku"]
+resource_name = "open_close_door"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/Door:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.349066, -3.14159]
+}
+
+[sub_resource type="Animation" id="Animation_veodj"]
+resource_name = "washing"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/LaundryStorage:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 18.8496]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body/LaundryStorage:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 23), Vector2(4, 26), Vector2(-4, 20)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xtwnd"]
+_data = {
+"open_close_door": SubResource("Animation_ie8ku"),
+"washing": SubResource("Animation_veodj")
+}
+
+[node name="Game" type="Node2D"]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+z_index = 10
+position = Vector2(731, 395)
+script = ExtResource("1_8ckga")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CapsuleShape2D_lffbe")
+
+[node name="Body" type="Node2D" parent="Player"]
+modulate = Color(0.811765, 0.333333, 0.811765, 1)
+rotation = 6.15296
+
+[node name="BodyContainer" type="Node2D" parent="Player/Body"]
+position = Vector2(-2, 7)
+
+[node name="Body" type="Sprite2D" parent="Player/Body/BodyContainer"]
+position = Vector2(0, 0.261533)
+texture = ExtResource("1_mc4a4")
+
+[node name="HeadContainer" type="Node2D" parent="Player/Body"]
+position = Vector2(0, -34.2)
+
+[node name="Head" type="Sprite2D" parent="Player/Body/HeadContainer"]
+position = Vector2(0, -0.442309)
+texture = ExtResource("6_rm1gt")
+
+[node name="Leg1Container" type="Node2D" parent="Player/Body"]
+position = Vector2(-18, 38)
+
+[node name="Leg1" type="Sprite2D" parent="Player/Body/Leg1Container"]
+position = Vector2(0, 3.7307)
+texture = ExtResource("4_6my6p")
+
+[node name="Leg2Container" type="Node2D" parent="Player/Body"]
+position = Vector2(19, 39)
+
+[node name="Leg2" type="Sprite2D" parent="Player/Body/Leg2Container"]
+position = Vector2(0, -3.7307)
+texture = ExtResource("5_35htc")
+
+[node name="Hands" type="Node2D" parent="Player/Body"]
+rotation = 0.0833715
+
+[node name="SpritesheetPlayerHand2" type="Sprite2D" parent="Player/Body/Hands"]
+position = Vector2(33.0001, 0)
+texture = ExtResource("3_f20pi")
+
+[node name="SpritesheetPlayerHand1" type="Sprite2D" parent="Player/Body/Hands"]
+position = Vector2(-34.9999, 2)
+texture = ExtResource("2_3m5wx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
+libraries = {
+"": SubResource("AnimationLibrary_bwvwr")
+}
+autoplay = "Idle"
+
+[node name="AnimationTree" type="AnimationTree" parent="Player"]
+libraries = {
+"": SubResource("AnimationLibrary_bwvwr")
+}
+tree_root = SubResource("AnimationNodeBlendSpace1D_4ldse")
+anim_player = NodePath("../AnimationPlayer")
+parameters/blend_position = 0.5
+
+[node name="Holder" type="Node2D" parent="Player"]
+
+[node name="HolderArea" type="Area2D" parent="Player/Holder"]
+position = Vector2(50, 0)
+collision_layer = 66
+collision_mask = 67
+
+[node name="ItemHolding" type="Node2D" parent="Player/Holder/HolderArea"]
+
+[node name="InteractCollision" type="CollisionShape2D" parent="Player/Holder/HolderArea"]
+position = Vector2(-30, 0)
+shape = SubResource("CircleShape2D_2klay")
+
+[node name="Jeans" parent="." instance=ExtResource("8_asych")]
+position = Vector2(535, 319)
+col = Color(0.603922, 0, 0.384314, 1)
+
+[node name="WashingMachine" type="Node2D" parent="."]
+position = Vector2(1013, 208)
+script = ExtResource("9_ygwom")
+
+[node name="Body" type="Node2D" parent="WashingMachine"]
+
+[node name="Body" type="Sprite2D" parent="WashingMachine/Body"]
+texture = ExtResource("9_viebq")
+
+[node name="Door" type="Sprite2D" parent="WashingMachine/Body"]
+z_index = 2
+position = Vector2(-37, 25)
+texture = ExtResource("10_qt8vu")
+offset = Vector2(37, 0)
+
+[node name="LoadedLed" type="Sprite2D" parent="WashingMachine/Body"]
+position = Vector2(52, 25)
+texture = ExtResource("11_11s7g")
+
+[node name="SpritesheetWashingMachineLoadedLedGreen" type="Sprite2D" parent="WashingMachine/Body/LoadedLed"]
+position = Vector2(0, 32)
+texture = ExtResource("13_p8yys")
+
+[node name="SpritesheetWashingMachineLoadedLedGreen2" type="Sprite2D" parent="WashingMachine/Body/LoadedLed"]
+position = Vector2(0, 25)
+texture = ExtResource("13_p8yys")
+
+[node name="SpritesheetWashingMachineLoadedLedGreen3" type="Sprite2D" parent="WashingMachine/Body/LoadedLed"]
+position = Vector2(0, 18)
+texture = ExtResource("13_p8yys")
+
+[node name="SpritesheetWashingMachineLoadedLedGreen4" type="Sprite2D" parent="WashingMachine/Body/LoadedLed"]
+position = Vector2(0, 11)
+texture = ExtResource("13_p8yys")
+
+[node name="SpritesheetWashingMachineLoadedLedYellow" type="Sprite2D" parent="WashingMachine/Body/LoadedLed"]
+position = Vector2(0, 4)
+texture = ExtResource("14_8poho")
+
+[node name="SpritesheetWashingMachineLoadedLedYellow2" type="Sprite2D" parent="WashingMachine/Body/LoadedLed"]
+position = Vector2(0, -3)
+texture = ExtResource("14_8poho")
+
+[node name="SpritesheetWashingMachineLoadedLedYellow3" type="Sprite2D" parent="WashingMachine/Body/LoadedLed"]
+position = Vector2(0, -10)
+texture = ExtResource("14_8poho")
+
+[node name="SpritesheetWashingMachineLoadedLedRed" type="Sprite2D" parent="WashingMachine/Body/LoadedLed"]
+position = Vector2(0, -17)
+texture = ExtResource("15_ht1xu")
+
+[node name="SpritesheetWashingMachineLoadedLedRed2" type="Sprite2D" parent="WashingMachine/Body/LoadedLed"]
+position = Vector2(0, -24)
+texture = ExtResource("15_ht1xu")
+
+[node name="SpritesheetWashingMachineLoadedLedRed3" type="Sprite2D" parent="WashingMachine/Body/LoadedLed"]
+position = Vector2(0, -31)
+texture = ExtResource("15_ht1xu")
+
+[node name="LaundryStorage" type="Node2D" parent="WashingMachine/Body"]
+position = Vector2(0, 23)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="WashingMachine"]
+collision_layer = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WashingMachine/StaticBody2D"]
+position = Vector2(2, -24.5)
+shape = SubResource("RectangleShape2D_wkq57")
+
+[node name="Interact" type="Area2D" parent="WashingMachine"]
+collision_layer = 67
+collision_mask = 66
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WashingMachine/Interact"]
+position = Vector2(0.5, 22.5)
+shape = SubResource("RectangleShape2D_7t853")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WashingMachine"]
+libraries = {
+"": SubResource("AnimationLibrary_xtwnd")
+}

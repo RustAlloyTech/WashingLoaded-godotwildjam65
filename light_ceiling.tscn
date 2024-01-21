@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://b365hxqwu3iy5"]
+
+[ext_resource type="Texture2D" uid="uid://bejam36ioc01b" path="res://Inkscape/spritesheet_Light.png" id="1_8wuak"]
+[ext_resource type="Script" path="res://light_ceiling.gd" id="2_67cj1"]
+
+[sub_resource type="Animation" id="Animation_fo2bu"]
+resource_name = "flicker"
+length = 2.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nato2"]
+_data = {
+"flicker": SubResource("Animation_fo2bu")
+}
+
+[node name="LightCeiling" type="PointLight2D"]
+scale = Vector2(4, 4)
+color = Color(1, 0.901961, 0.8, 1)
+energy = 0.3
+shadow_enabled = true
+texture = ExtResource("1_8wuak")
+script = ExtResource("2_67cj1")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nato2")
+}
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

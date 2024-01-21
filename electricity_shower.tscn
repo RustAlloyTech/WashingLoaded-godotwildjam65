@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://28u4tp2g0syh"]
+
+[ext_resource type="Script" path="res://electricity_shower.gd" id="1_frssl"]
+[ext_resource type="PackedScene" uid="uid://c2a8ymmw128yi" path="res://electricity_led_light.tscn" id="2_2f87o"]
+
+[node name="ElectricityShower" type="Node2D"]
+script = ExtResource("1_frssl")
+
+[node name="ElectricityLedLight" parent="." instance=ExtResource("2_2f87o")]

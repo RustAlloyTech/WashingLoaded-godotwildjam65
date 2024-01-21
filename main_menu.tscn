@@ -1,0 +1,156 @@
+[gd_scene load_steps=5 format=3 uid="uid://dt58wfy0bn1bv"]
+
+[ext_resource type="Script" path="res://main_menu.gd" id="1_ho443"]
+[ext_resource type="PackedScene" uid="uid://cd883oshwdox5" path="res://level_button.tscn" id="2_a8igp"]
+[ext_resource type="Texture2D" uid="uid://de05km6bxtiix" path="res://smirking-face-svgrepo-com.svg" id="3_id3wy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_e1ee5"]
+font_size = 64
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ho443")
+
+[node name="MainMenu" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="StartButton" type="Button" parent="MainMenu"]
+layout_mode = 0
+offset_left = 445.0
+offset_top = 231.0
+offset_right = 863.0
+offset_bottom = 296.0
+text = "Start (space)
+"
+
+[node name="ExitButton" type="Button" parent="MainMenu"]
+layout_mode = 0
+offset_left = 452.0
+offset_top = 570.0
+offset_right = 856.0
+offset_bottom = 637.0
+text = "Exit (esc)"
+
+[node name="LevelSelectButton" type="Button" parent="MainMenu"]
+layout_mode = 0
+offset_left = 450.0
+offset_top = 435.0
+offset_right = 858.0
+offset_bottom = 544.0
+text = "Level Select (e)"
+
+[node name="DisableSFX" type="Button" parent="MainMenu"]
+layout_mode = 0
+offset_left = 950.0
+offset_top = 429.0
+offset_right = 1108.0
+offset_bottom = 555.0
+text = "Disable SFX"
+
+[node name="DisableMusicButton" type="Button" parent="MainMenu"]
+layout_mode = 0
+offset_left = 228.0
+offset_top = 427.0
+offset_right = 378.0
+offset_bottom = 554.0
+text = "Disable Music"
+
+[node name="StartDay6" type="Button" parent="MainMenu"]
+layout_mode = 0
+offset_left = 446.0
+offset_top = 318.0
+offset_right = 866.0
+offset_bottom = 399.0
+text = "Let's skip the easy  levels.
+ Start at Day 6"
+
+[node name="Smirking-face-svgrepo-com" type="Sprite2D" parent="MainMenu"]
+position = Vector2(812, 362)
+texture = ExtResource("3_id3wy")
+
+[node name="LevelSelect" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HFlowContainer" type="GridContainer" parent="LevelSelect"]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 198.0
+offset_right = 1345.0
+offset_bottom = 586.0
+theme_override_constants/v_separation = 150
+columns = 5
+
+[node name="Level1Button" parent="LevelSelect/HFlowContainer" instance=ExtResource("2_a8igp")]
+layout_mode = 2
+level_number = 1
+
+[node name="Level1Button2" parent="LevelSelect/HFlowContainer" instance=ExtResource("2_a8igp")]
+layout_mode = 2
+level_number = 2
+
+[node name="Level1Button3" parent="LevelSelect/HFlowContainer" instance=ExtResource("2_a8igp")]
+layout_mode = 2
+level_number = 3
+
+[node name="Level1Button4" parent="LevelSelect/HFlowContainer" instance=ExtResource("2_a8igp")]
+layout_mode = 2
+level_number = 4
+
+[node name="Level1Button5" parent="LevelSelect/HFlowContainer" instance=ExtResource("2_a8igp")]
+layout_mode = 2
+level_number = 5
+
+[node name="Level1Button6" parent="LevelSelect/HFlowContainer" instance=ExtResource("2_a8igp")]
+layout_mode = 2
+level_number = 6
+
+[node name="Level1Button7" parent="LevelSelect/HFlowContainer" instance=ExtResource("2_a8igp")]
+layout_mode = 2
+level_number = 7
+
+[node name="Level1Button8" parent="LevelSelect/HFlowContainer" instance=ExtResource("2_a8igp")]
+layout_mode = 2
+level_number = 8
+
+[node name="Level1Button9" parent="LevelSelect/HFlowContainer" instance=ExtResource("2_a8igp")]
+layout_mode = 2
+level_number = 9
+
+[node name="Level1Button10" parent="LevelSelect/HFlowContainer" instance=ExtResource("2_a8igp")]
+layout_mode = 2
+level_number = 10
+
+[node name="LevelSelectBackButton" type="Button" parent="LevelSelect"]
+layout_mode = 0
+offset_left = 503.0
+offset_top = 511.0
+offset_right = 718.0
+offset_bottom = 622.0
+text = "Back (e)"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 377.0
+offset_top = -9.0
+offset_right = 870.0
+offset_bottom = 117.0
+text = "WashingLoaded"
+label_settings = SubResource("LabelSettings_e1ee5")
+
+[connection signal="pressed" from="MainMenu/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MainMenu/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="MainMenu/LevelSelectButton" to="." method="_on_level_select_button_pressed"]
+[connection signal="pressed" from="MainMenu/DisableSFX" to="." method="_on_disable_sfx_pressed"]
+[connection signal="pressed" from="MainMenu/DisableMusicButton" to="." method="_on_disable_music_button_pressed"]
+[connection signal="pressed" from="MainMenu/StartDay6" to="." method="_on_start_day_6_pressed"]
+[connection signal="pressed" from="LevelSelect/LevelSelectBackButton" to="." method="_on_level_select_back_button_pressed"]

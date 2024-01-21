@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bx4b2b2rs8m3m"]
+
+[ext_resource type="Texture2D" uid="uid://c7xks4hyi1agq" path="res://Inkscape/spritesheet_LightWall.png" id="1_j5c5q"]
+[ext_resource type="PackedScene" uid="uid://b365hxqwu3iy5" path="res://light_ceiling.tscn" id="2_aql2g"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_tw5h4"]
+polygon = PackedVector2Array(21, 12, -19, 13, -24, 10, -17, 9, 20, 8, 25, 11)
+
+[node name="LightWall" type="Sprite2D"]
+position = Vector2(393, 53)
+texture = ExtResource("1_j5c5q")
+
+[node name="LightCeiling" parent="." instance=ExtResource("2_aql2g")]
+position = Vector2(0, 17)
+color = Color(0.847059, 0.388235, 0.517647, 1)
+energy = 0.74
+range_item_cull_mask = 3
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_tw5h4")

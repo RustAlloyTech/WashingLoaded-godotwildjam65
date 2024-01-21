@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2a8ymmw128yi"]
+
+[ext_resource type="Texture2D" uid="uid://b1wjii10pa8we" path="res://Inkscape/spritesheet_WashingMachine_ElectricityLed_Light.png" id="1_jb2nc"]
+[ext_resource type="Script" path="res://electricity_led_light.gd" id="2_n70tb"]
+
+[node name="ElectricityLedLight" type="Sprite2D"]
+scale = Vector2(5, 2)
+texture = ExtResource("1_jb2nc")
+script = ExtResource("2_n70tb")

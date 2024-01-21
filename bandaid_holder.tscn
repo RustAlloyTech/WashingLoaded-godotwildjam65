@@ -1,0 +1,78 @@
+[gd_scene load_steps=7 format=3 uid="uid://bq63ncrqw3hvc"]
+
+[ext_resource type="PackedScene" uid="uid://cyh6ykbtom7ii" path="res://Clothes/bandaid.tscn" id="1_vgx4l"]
+[ext_resource type="Script" path="res://bandaid_holder.gd" id="1_ymowp"]
+
+[sub_resource type="Animation" id="Animation_736ka"]
+resource_name = "bandaid_floating"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BandaidHolderInner:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -20)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3h2jq"]
+_data = {
+"bandaid_floating": SubResource("Animation_736ka")
+}
+
+[sub_resource type="Animation" id="Animation_xo1h3"]
+resource_name = "blink"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BandaidHolderInner:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.4, 0.5, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BandaidHolderInner:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(3, 3), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mvrrj"]
+_data = {
+"blink": SubResource("Animation_xo1h3")
+}
+
+[node name="BandaidHolder" type="Node2D"]
+position = Vector2(107, 87)
+script = ExtResource("1_ymowp")
+
+[node name="BandaidHolderInner" type="Node2D" parent="."]
+position = Vector2(0, -15.9184)
+
+[node name="Bandaid" parent="BandaidHolderInner" instance=ExtResource("1_vgx4l")]
+position = Vector2(-4, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3h2jq")
+}
+
+[node name="BlinkPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_mvrrj")
+}

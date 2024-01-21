@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3w5fkiex2a7w"]
+
+[ext_resource type="Script" path="res://test.gd" id="1_8jki5"]
+[ext_resource type="Texture2D" uid="uid://bfpunwifjllc" path="res://light_gradient.tres" id="1_tapri"]
+[ext_resource type="Script" path="res://customer_spawner.gd" id="3_fut4p"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_8jki5")
+
+[node name="LightGradient" type="Sprite2D" parent="."]
+modulate = Color(0.8, 0, 0, 1)
+position = Vector2(-163, 30)
+texture = ExtResource("1_tapri")
+
+[node name="Spawner" type="Node2D" parent="."]
+script = ExtResource("3_fut4p")
+max_color = 4

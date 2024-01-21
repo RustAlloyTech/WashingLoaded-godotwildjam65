@@ -1,0 +1,565 @@
+[gd_scene load_steps=58 format=3 uid="uid://b1wqmyygavjc0"]
+
+[ext_resource type="Texture2D" uid="uid://diqsv7st333ko" path="res://Inkscape/spritesheet_PlayerBody.png" id="1_78hbx"]
+[ext_resource type="Script" path="res://Customer/customer.gd" id="1_q3poo"]
+[ext_resource type="Texture2D" uid="uid://xinsjjjwb4by" path="res://Inkscape/spritesheet_PlayerHead.png" id="2_k18k2"]
+[ext_resource type="Texture2D" uid="uid://bvrrvodkv7jg4" path="res://Inkscape/spritesheet_Body_Jeans_Off.png" id="2_uvf4p"]
+[ext_resource type="Texture2D" uid="uid://d4h7smak8vi6y" path="res://Inkscape/spritesheet_PlayerLeg1.png" id="3_1qp4d"]
+[ext_resource type="Texture2D" uid="uid://chqvnxcjia1ma" path="res://Inkscape/spritesheet_Body_Shirt_Off.png" id="3_rjjfu"]
+[ext_resource type="Texture2D" uid="uid://d2fb8i6c4h0s2" path="res://Inkscape/spritesheet_PlayerLeg2.png" id="4_uysi8"]
+[ext_resource type="Texture2D" uid="uid://dqs70c4o5kaj0" path="res://Inkscape/spritesheet_PlayerHand2.png" id="5_pktcw"]
+[ext_resource type="Texture2D" uid="uid://wgloq8xiqtww" path="res://Inkscape/spritesheet_AngryFace.png" id="6_1xx12"]
+[ext_resource type="Texture2D" uid="uid://c6tcgs4ps5fs8" path="res://Inkscape/spritesheet_PlayerHand1.png" id="6_dijc7"]
+[ext_resource type="Texture2D" uid="uid://xum3r4eoqjqk" path="res://Inkscape/spritesheet_ThinkBalloon.png" id="6_tau12"]
+[ext_resource type="Texture2D" uid="uid://dqup3rydalt5e" path="res://Inkscape/spritesheet_Leg1_Socks_Off_copy_2.png" id="7_04wbt"]
+[ext_resource type="Texture2D" uid="uid://cdnc68hf1ylq7" path="res://Inkscape/spritesheet_SandTimer.png" id="7_u6yi4"]
+[ext_resource type="Texture2D" uid="uid://dyydx37x6a5fm" path="res://Inkscape/spritesheet_NotEqual.png" id="8_yt07f"]
+[ext_resource type="Texture2D" uid="uid://x8fner07tp7k" path="res://Inkscape/spritesheet_Jeans.png" id="9_0ym1y"]
+[ext_resource type="Texture2D" uid="uid://byj84ftw5qmnb" path="res://Inkscape/spritesheet_Leg2_Socks_Off_copy_2.png" id="9_hd3o6"]
+[ext_resource type="Texture2D" uid="uid://mfpqv4bb10lf" path="res://Inkscape/spritesheet_Socks.png" id="10_gfe51"]
+[ext_resource type="Texture2D" uid="uid://booqlvva8ispj" path="res://Inkscape/spritesheet_Tshirt.png" id="11_otft2"]
+[ext_resource type="Texture2D" uid="uid://d30c81lcxh437" path="res://Inkscape/spritesheet_Dirt.png" id="12_g06t4"]
+[ext_resource type="Animation" uid="uid://bk6m2phxjbtkk" path="res://Idle.res" id="12_k6kcv"]
+[ext_resource type="Animation" uid="uid://bmiuqf758n5x4" path="res://Walking.res" id="13_wegob"]
+[ext_resource type="Texture2D" uid="uid://de3oq1ibk83pg" path="res://Inkscape/spritesheet_HappyEyes1.png" id="14_a0x8n"]
+[ext_resource type="Texture2D" uid="uid://d2xlu2xm2g2pt" path="res://Inkscape/spritesheet_HappyEyes2.png" id="15_88cwc"]
+[ext_resource type="Texture2D" uid="uid://j36kbjbtsw83" path="res://Inkscape/spritesheet_HappyEyes3.png" id="16_tbday"]
+[ext_resource type="Texture2D" uid="uid://iuwrsmtjo6ib" path="res://Inkscape/spritesheet_HappyEyes4.png" id="17_dfumh"]
+[ext_resource type="Texture2D" uid="uid://8e7rn4r8ibct" path="res://Inkscape/spritesheet_HappyEyes5.png" id="18_45bvp"]
+[ext_resource type="Texture2D" uid="uid://dvinnnyjhfh0e" path="res://Inkscape/spritesheet_HappyEyes6.png" id="19_gwb7d"]
+[ext_resource type="Texture2D" uid="uid://b54wsigavx41b" path="res://Inkscape/spritesheet_HappyMouth1.png" id="20_fky8b"]
+[ext_resource type="Texture2D" uid="uid://b56yf2q4e3fnw" path="res://Inkscape/spritesheet_HappyMouth2.png" id="21_kpwyo"]
+[ext_resource type="Texture2D" uid="uid://baggtrbf5v0t4" path="res://Inkscape/spritesheet_HappyMouth3.png" id="22_yfphc"]
+[ext_resource type="Texture2D" uid="uid://bc4j7tdfg3ieu" path="res://Inkscape/spritesheet_HappyMouth4.png" id="23_hb4nf"]
+[ext_resource type="AudioStream" uid="uid://drvbj4tg7kmr8" path="res://Audacity/greeting1.wav" id="32_yxogk"]
+[ext_resource type="AudioStream" uid="uid://1ft77xg8r58m" path="res://Audacity/greeting2.wav" id="33_db4ld"]
+[ext_resource type="AudioStream" uid="uid://blhhjocilmbrp" path="res://Audacity/greeting3.wav" id="34_cewep"]
+[ext_resource type="AudioStream" uid="uid://bw7lcw6s7yjwo" path="res://Audacity/greeting4.wav" id="35_blh73"]
+[ext_resource type="AudioStream" uid="uid://bx66nte2xqpcs" path="res://Audacity/greeting5.wav" id="36_a5chc"]
+[ext_resource type="AudioStream" uid="uid://di5i8gn7cbgmd" path="res://Audacity/greeting6.wav" id="37_m0cup"]
+[ext_resource type="AudioStream" uid="uid://cr3ekkpqrwsx2" path="res://Audacity/greeting7.wav" id="38_c7j3n"]
+[ext_resource type="AudioStream" uid="uid://8m1yijrkyut5" path="res://Audacity/greeting8.wav" id="39_bu57k"]
+[ext_resource type="AudioStream" uid="uid://vib0nwano8sm" path="res://Audacity/nyah1.wav" id="40_6sxfs"]
+[ext_resource type="AudioStream" uid="uid://cj464rcii1oc4" path="res://Audacity/nyah2.wav" id="41_6yfa0"]
+[ext_resource type="AudioStream" uid="uid://djrtomc3j28bm" path="res://Audacity/nyah3.wav" id="42_8gve3"]
+[ext_resource type="AudioStream" uid="uid://dpqc1820o2iai" path="res://Audacity/nyah4.wav" id="43_ka64n"]
+[ext_resource type="AudioStream" uid="uid://dyu15eidmh5x6" path="res://Audacity/yay1.wav" id="44_pscte"]
+[ext_resource type="AudioStream" uid="uid://buir5cvnxppby" path="res://Audacity/yay2.wav" id="45_yekar"]
+[ext_resource type="AudioStream" uid="uid://bwe07ydsiwqhh" path="res://Audacity/yay3.wav" id="46_0jrcy"]
+[ext_resource type="AudioStream" uid="uid://dy5i8n06mem4m" path="res://Audacity/yay4.wav" id="47_asmuh"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xxye0"]
+
+[sub_resource type="Animation" id="Animation_di0ia"]
+resource_name = "Angry_1"
+length = 1.5
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:rotation")
+tracks/0/interp = 4
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body/Leg1Container/Leg1:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.225, 0.35, 0.5, 0.525),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-10, 0), Vector2(-10, -20), Vector2(-10, 0), Vector2(-10, 0), Vector2(-10, -20), Vector2(-10, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body/Leg2Container/Leg2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.55, 0.7, 0.725),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, -10), Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Body/BodyContainer/Body:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0.515233), Vector2(0, 5), Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Body:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Body/HeadContainer/Head:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -1.2), Vector2(0, 5), Vector2(0, 10), Vector2(0, 5)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Body/Hands/Hand1Container/SpritesheetPlayerHand1:position")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -15), Vector2(0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Body/Hands/Hand2Container/SpritesheetPlayerHand2:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.35, 0.45, 0.55, 0.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(3.81955, -2.32615), Vector2(-4.40249, -4.64953), Vector2(-2.48994, 6.22899), Vector2(-2.48994, 6.22899), Vector2(3.15335, -10.2984), Vector2(-12.6218, 5.06869), Vector2(8.88823, 10.2956)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Body/HeadContainer/Head/SpritesheetAngryFace:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.025, 1.325),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_jbv0l"]
+resource_name = "Dancing_1"
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:rotation")
+tracks/0/interp = 4
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body/Leg1Container/Leg1:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-10, 0), Vector2(0, 0), Vector2(1.145, -3)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body/Leg2Container/Leg2:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(3, -12), Vector2(8, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Body/BodyContainer/Body:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.85),
+"transitions": PackedFloat32Array(1, 1, 0.329877),
+"update": 0,
+"values": [Vector2(0, 0.515233), Vector2(7, 3), Vector2(0.734, 0.863)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Body:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Body/HeadContainer/Head:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -1.2), Vector2(0, -1.2), Vector2(-7, -5.8)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Body/Hands/Hand1Container/SpritesheetPlayerHand1:position")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-16.0332, -23.7473)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Body/Hands/Hand2Container/SpritesheetPlayerHand2:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.05, 0.65),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(7.88894, -1.66273), Vector2(14.5288, -18.2733)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bwvwr"]
+_data = {
+"Angry_1": SubResource("Animation_di0ia"),
+"Dancing_1": SubResource("Animation_jbv0l"),
+"Idle": ExtResource("12_k6kcv"),
+"Walking": ExtResource("13_wegob")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pnhvm"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_enqhq"]
+animation = &"Walking"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_hvc8a"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_pnhvm")
+blend_point_0/pos = -1.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_enqhq")
+blend_point_1/pos = 1.0
+value_label = "x"
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_cqeph"]
+streams_count = 8
+stream_0/stream = ExtResource("32_yxogk")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("33_db4ld")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("34_cewep")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("35_blh73")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("36_a5chc")
+stream_4/weight = 1.0
+stream_5/stream = ExtResource("37_m0cup")
+stream_5/weight = 1.0
+stream_6/stream = ExtResource("38_c7j3n")
+stream_6/weight = 1.0
+stream_7/stream = ExtResource("39_bu57k")
+stream_7/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ynrva"]
+streams_count = 4
+stream_0/stream = ExtResource("40_6sxfs")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("41_6yfa0")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("42_8gve3")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("43_ka64n")
+stream_3/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rdet1"]
+streams_count = 4
+stream_0/stream = ExtResource("44_pscte")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("45_yekar")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("46_0jrcy")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("47_asmuh")
+stream_3/weight = 1.0
+
+[node name="Customer" type="CharacterBody2D"]
+z_index = 200
+collision_mask = 9
+floor_stop_on_slope = false
+floor_block_on_wall = false
+script = ExtResource("1_q3poo")
+
+[node name="Body" type="Node2D" parent="."]
+
+[node name="BodyContainer" type="Node2D" parent="Body"]
+position = Vector2(-2, 7)
+
+[node name="Body" type="Sprite2D" parent="Body/BodyContainer"]
+position = Vector2(0, 0.515233)
+rotation = -0.0453171
+texture = ExtResource("1_78hbx")
+
+[node name="SpritesheetBodyJeansOff" type="Sprite2D" parent="Body/BodyContainer/Body"]
+visible = false
+texture = ExtResource("2_uvf4p")
+
+[node name="SpritesheetBodyShirtOff" type="Sprite2D" parent="Body/BodyContainer/Body"]
+visible = false
+texture = ExtResource("3_rjjfu")
+
+[node name="HeadContainer" type="Node2D" parent="Body"]
+position = Vector2(0, -34.2)
+
+[node name="Head" type="Sprite2D" parent="Body/HeadContainer"]
+position = Vector2(0, -1.2)
+texture = ExtResource("2_k18k2")
+
+[node name="SpritesheetThinkBalloon" type="Sprite2D" parent="Body/HeadContainer/Head"]
+visible = false
+position = Vector2(-26, -64.6)
+texture = ExtResource("6_tau12")
+
+[node name="SpritesheetSandTimer" type="Sprite2D" parent="Body/HeadContainer/Head/SpritesheetThinkBalloon"]
+visible = false
+position = Vector2(14, -17)
+texture = ExtResource("7_u6yi4")
+
+[node name="SpritesheetNotEqual" type="Sprite2D" parent="Body/HeadContainer/Head/SpritesheetThinkBalloon"]
+visible = false
+position = Vector2(18, -16)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("8_yt07f")
+
+[node name="SpritesheetJeans" type="Sprite2D" parent="Body/HeadContainer/Head/SpritesheetThinkBalloon"]
+visible = false
+position = Vector2(-21.75, -19.375)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("9_0ym1y")
+
+[node name="SpritesheetJeans2" type="Sprite2D" parent="Body/HeadContainer/Head/SpritesheetThinkBalloon/SpritesheetJeans"]
+position = Vector2(108.2, 1.83333)
+texture = ExtResource("9_0ym1y")
+
+[node name="SpritesheetSocks" type="Sprite2D" parent="Body/HeadContainer/Head/SpritesheetThinkBalloon"]
+visible = false
+position = Vector2(-25.75, -19.375)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("10_gfe51")
+
+[node name="SpritesheetSocks2" type="Sprite2D" parent="Body/HeadContainer/Head/SpritesheetThinkBalloon/SpritesheetSocks"]
+position = Vector2(108.2, 1.83333)
+texture = ExtResource("10_gfe51")
+
+[node name="SpritesheetTshirt" type="Sprite2D" parent="Body/HeadContainer/Head/SpritesheetThinkBalloon"]
+visible = false
+position = Vector2(-21.75, -17.375)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("11_otft2")
+
+[node name="SpritesheetTshirt2" type="Sprite2D" parent="Body/HeadContainer/Head/SpritesheetThinkBalloon/SpritesheetTshirt"]
+position = Vector2(108.2, 1.83333)
+texture = ExtResource("11_otft2")
+
+[node name="SpritesheetDirt" type="Sprite2D" parent="Body/HeadContainer/Head/SpritesheetThinkBalloon"]
+visible = false
+position = Vector2(4, -25)
+texture = ExtResource("12_g06t4")
+
+[node name="SpritesheetDirt2" type="Sprite2D" parent="Body/HeadContainer/Head/SpritesheetThinkBalloon/SpritesheetDirt"]
+position = Vector2(28, 15)
+rotation = 2.90074
+texture = ExtResource("12_g06t4")
+
+[node name="SpritesheetAngryFace" type="Sprite2D" parent="Body/HeadContainer/Head"]
+visible = false
+position = Vector2(23, -12.8)
+texture = ExtResource("6_1xx12")
+
+[node name="SpritesheetHappyEyes1" type="Sprite2D" parent="Body/HeadContainer/Head"]
+visible = false
+position = Vector2(-1, -11.6)
+texture = ExtResource("14_a0x8n")
+
+[node name="SpritesheetHappyEyes2" type="Sprite2D" parent="Body/HeadContainer/Head"]
+visible = false
+position = Vector2(-1, -5.6)
+texture = ExtResource("15_88cwc")
+
+[node name="SpritesheetHappyEyes3" type="Sprite2D" parent="Body/HeadContainer/Head"]
+visible = false
+texture = ExtResource("16_tbday")
+
+[node name="SpritesheetHappyEyes4" type="Sprite2D" parent="Body/HeadContainer/Head"]
+visible = false
+position = Vector2(-1, -7.6)
+texture = ExtResource("17_dfumh")
+
+[node name="SpritesheetHappyEyes5" type="Sprite2D" parent="Body/HeadContainer/Head"]
+visible = false
+texture = ExtResource("18_45bvp")
+
+[node name="SpritesheetHappyEyes6" type="Sprite2D" parent="Body/HeadContainer/Head"]
+visible = false
+texture = ExtResource("19_gwb7d")
+
+[node name="SpritesheetHappyMouth1" type="Sprite2D" parent="Body/HeadContainer/Head"]
+visible = false
+position = Vector2(1, 12.4)
+texture = ExtResource("20_fky8b")
+
+[node name="SpritesheetHappyMouth2" type="Sprite2D" parent="Body/HeadContainer/Head"]
+visible = false
+position = Vector2(0, 11.4)
+texture = ExtResource("21_kpwyo")
+
+[node name="SpritesheetHappyMouth3" type="Sprite2D" parent="Body/HeadContainer/Head"]
+visible = false
+position = Vector2(0, 12.4)
+texture = ExtResource("22_yfphc")
+
+[node name="SpritesheetHappyMouth4" type="Sprite2D" parent="Body/HeadContainer/Head"]
+visible = false
+position = Vector2(-2, 8.4)
+texture = ExtResource("23_hb4nf")
+
+[node name="Leg1Container" type="Node2D" parent="Body"]
+position = Vector2(-18, 38)
+
+[node name="Leg1" type="Sprite2D" parent="Body/Leg1Container"]
+position = Vector2(-10, 0)
+texture = ExtResource("3_1qp4d")
+
+[node name="SpritesheetLeg1SocksOff" type="Sprite2D" parent="Body/Leg1Container/Leg1"]
+visible = false
+texture = ExtResource("7_04wbt")
+
+[node name="Leg2Container" type="Node2D" parent="Body"]
+position = Vector2(19, 39)
+
+[node name="Leg2" type="Sprite2D" parent="Body/Leg2Container"]
+rotation = -0.423028
+texture = ExtResource("4_uysi8")
+
+[node name="SpritesheetLeg2SocksOff" type="Sprite2D" parent="Body/Leg2Container/Leg2"]
+visible = false
+texture = ExtResource("9_hd3o6")
+
+[node name="Hands" type="Node2D" parent="Body"]
+rotation = 0.0833715
+
+[node name="Hand1Container" type="Node2D" parent="Body/Hands"]
+position = Vector2(-37.868, 3.16445)
+
+[node name="SpritesheetPlayerHand1" type="Sprite2D" parent="Body/Hands/Hand1Container"]
+texture = ExtResource("6_dijc7")
+
+[node name="Hand2Container" type="Node2D" parent="Body/Hands"]
+position = Vector2(26.9895, -1.2519)
+
+[node name="SpritesheetPlayerHand2" type="Sprite2D" parent="Body/Hands/Hand2Container"]
+texture = ExtResource("5_pktcw")
+
+[node name="Holder" type="Node2D" parent="Body/Hands/Hand2Container/SpritesheetPlayerHand2"]
+position = Vector2(-33.0001, -1.19209e-07)
+rotation = -0.0605092
+
+[node name="HolderArea" type="Area2D" parent="Body/Hands/Hand2Container/SpritesheetPlayerHand2/Holder"]
+position = Vector2(50, 0)
+collision_layer = 66
+collision_mask = 66
+monitoring = false
+monitorable = false
+
+[node name="ItemHolding" type="Node2D" parent="Body/Hands/Hand2Container/SpritesheetPlayerHand2/Holder/HolderArea"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 43)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_xxye0")
+disabled = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+target_desired_distance = 20.0
+path_max_distance = 500.0
+path_postprocessing = 1
+avoidance_enabled = true
+radius = 15.0
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bwvwr")
+}
+autoplay = "Idle"
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+active = false
+libraries = {
+"": SubResource("AnimationLibrary_bwvwr")
+}
+tree_root = SubResource("AnimationNodeBlendSpace1D_hvc8a")
+anim_player = NodePath("../AnimationPlayer2")
+parameters/blend_position = -0.00179213
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="GreetingsPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_cqeph")
+attenuation = 4.0
+bus = &"SFX"
+
+[node name="UnhappyPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_ynrva")
+attenuation = 4.0
+bus = &"SFX"
+
+[node name="HappyPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_rdet1")
+attenuation = 4.0
+bus = &"SFX"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

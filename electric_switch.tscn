@@ -1,0 +1,122 @@
+[gd_scene load_steps=10 format=3 uid="uid://dvbk6c6r42krl"]
+
+[ext_resource type="Texture2D" uid="uid://7vvul4whik7a" path="res://Inkscape/spritesheet_Switch.png" id="1_y6tj5"]
+[ext_resource type="Texture2D" uid="uid://b6bw6qbv3phfy" path="res://Inkscape/spritesheet_Switch_Button.png" id="2_3acqb"]
+[ext_resource type="Script" path="res://electric_switch.gd" id="2_8hyjm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aaax4"]
+radius = 47.0425
+
+[sub_resource type="Animation" id="Animation_mx8jm"]
+resource_name = "SwitchOff"
+length = 0.4
+step = 0.02
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SwitchButtonHolder/SpritesheetSwitchButton:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.12, 0.38),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -1.5708, -1.22173]
+}
+
+[sub_resource type="Animation" id="Animation_c4xr5"]
+resource_name = "SwitchOn"
+length = 0.4
+step = 0.02
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SwitchButtonHolder/SpritesheetSwitchButton:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.12, 0.36),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-1.22173, -1.5708, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l56vf"]
+_data = {
+"SwitchOff": SubResource("Animation_mx8jm"),
+"SwitchOn": SubResource("Animation_c4xr5")
+}
+
+[sub_resource type="Animation" id="Animation_qk4ct"]
+resource_name = "blink"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("SwitchButtonHolder/SpritesheetSwitchButton:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(3, 3), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7r2wv"]
+_data = {
+"blink": SubResource("Animation_qk4ct")
+}
+
+[node name="ElectricSwitch" type="Sprite2D"]
+texture = ExtResource("1_y6tj5")
+script = ExtResource("2_8hyjm")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-6, -1)
+shape = SubResource("CircleShape2D_aaax4")
+
+[node name="SwitchButtonHolder" type="Node2D" parent="."]
+position = Vector2(-9, 1)
+
+[node name="SpritesheetSwitchButton" type="Sprite2D" parent="SwitchButtonHolder"]
+texture = ExtResource("2_3acqb")
+offset = Vector2(-23.86, -15.475)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_l56vf")
+}
+
+[node name="BlinkPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7r2wv")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

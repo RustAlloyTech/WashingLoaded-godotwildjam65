@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://7g3c1jspy33j"]
+
+[ext_resource type="Script" path="res://cloth.gd" id="1_xt41c"]
+[ext_resource type="Texture2D" uid="uid://mfpqv4bb10lf" path="res://Inkscape/spritesheet_Socks.png" id="2_yf75y"]
+[ext_resource type="Texture2D" uid="uid://d30c81lcxh437" path="res://Inkscape/spritesheet_Dirt.png" id="3_x3h7k"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pidc7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5errk"]
+radius = 17.1172
+
+[node name="Socks" type="RigidBody2D" groups=["Clothes"]]
+z_index = 1
+texture_filter = 1
+disable_mode = 2
+collision_layer = 2
+collision_mask = 2051
+physics_material_override = SubResource("PhysicsMaterial_pidc7")
+lock_rotation = true
+linear_damp = 3.0
+script = ExtResource("1_xt41c")
+weight = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5errk")
+
+[node name="SpritesheetSocks" type="Sprite2D" parent="."]
+texture = ExtResource("2_yf75y")
+
+[node name="SpritesheetDirt" type="Sprite2D" parent="."]
+position = Vector2(5, 16)
+scale = Vector2(0.717391, 0.473684)
+texture = ExtResource("3_x3h7k")

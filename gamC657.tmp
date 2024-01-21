@@ -1,0 +1,183 @@
+[gd_scene load_steps=16 format=3 uid="uid://bwdm51iqlcum2"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_8ckga"]
+[ext_resource type="Texture2D" uid="uid://bnerunfl2g5mp" path="res://Inkscape/spritesheet_PlayerBody.png" id="1_mc4a4"]
+[ext_resource type="Texture2D" uid="uid://b0g2k3w80o4dl" path="res://Inkscape/spritesheet_PlayerHand1.png" id="2_3m5wx"]
+[ext_resource type="Texture2D" uid="uid://dnwhxlpiue77e" path="res://Inkscape/spritesheet_PlayerHand2.png" id="3_f20pi"]
+[ext_resource type="Texture2D" uid="uid://qg7fa6vkp4au" path="res://Inkscape/spritesheet_PlayerLeg1.png" id="4_6my6p"]
+[ext_resource type="Texture2D" uid="uid://cm52p6owwiu5w" path="res://Inkscape/spritesheet_PlayerLeg2.png" id="5_35htc"]
+[ext_resource type="Texture2D" uid="uid://dh71bpm6rtrsk" path="res://Inkscape/spritesheet_PlayerHead.png" id="6_rm1gt"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lffbe"]
+radius = 19.0
+height = 56.0
+
+[sub_resource type="Animation" id="Animation_sd1fj"]
+resource_name = "head_bobbing"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/HeadContainer/Head:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(3, -39), Vector2(-2.99999, -41), Vector2(-6, -38), Vector2(-2.99999, -41)]
+}
+
+[sub_resource type="Animation" id="Animation_sdwbp"]
+resource_name = "Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/BodyContainer/Body:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body/HeadContainer/Head:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -2)]
+}
+
+[sub_resource type="Animation" id="Animation_svesv"]
+resource_name = "Walking"
+length = 0.6
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:rotation")
+tracks/0/interp = 4
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.174533, 0.0, 0.174533]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body/Leg1Container/Leg1:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 5), Vector2(0, 0), Vector2(0, -5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body/Leg2Container/Leg2:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -5), Vector2(0, 0), Vector2(0, 5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bwvwr"]
+_data = {
+"Idle": SubResource("Animation_sdwbp"),
+"Walking": SubResource("Animation_svesv"),
+"head_bobbing": SubResource("Animation_sd1fj")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pnhvm"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_enqhq"]
+animation = &"Walking"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_4ldse"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_pnhvm")
+blend_point_0/pos = -1.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_enqhq")
+blend_point_1/pos = 1.0
+value_label = "x"
+
+[node name="Game" type="Node2D"]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+modulate = Color(0.811765, 0.333333, 0.811765, 1)
+position = Vector2(617, 338)
+script = ExtResource("1_8ckga")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CapsuleShape2D_lffbe")
+
+[node name="Body" type="Node2D" parent="Player"]
+rotation = 6.19124
+
+[node name="SpritesheetPlayerHand1" type="Sprite2D" parent="Player/Body"]
+position = Vector2(-35, 2)
+texture = ExtResource("2_3m5wx")
+
+[node name="SpritesheetPlayerHand2" type="Sprite2D" parent="Player/Body"]
+position = Vector2(33, 0)
+texture = ExtResource("3_f20pi")
+
+[node name="BodyContainer" type="Node2D" parent="Player/Body"]
+position = Vector2(-2, 7)
+
+[node name="Body" type="Sprite2D" parent="Player/Body/BodyContainer"]
+position = Vector2(0, 0.245037)
+texture = ExtResource("1_mc4a4")
+
+[node name="HeadContainer" type="Node2D" parent="Player/Body"]
+position = Vector2(0, -34.2)
+
+[node name="Head" type="Sprite2D" parent="Player/Body/HeadContainer"]
+position = Vector2(0, -0.053309)
+texture = ExtResource("6_rm1gt")
+
+[node name="Leg1Container" type="Node2D" parent="Player/Body"]
+position = Vector2(-18, 38)
+
+[node name="Leg1" type="Sprite2D" parent="Player/Body/Leg1Container"]
+position = Vector2(0, 2.63409)
+texture = ExtResource("4_6my6p")
+
+[node name="Leg2Container" type="Node2D" parent="Player/Body"]
+position = Vector2(19, 39)
+
+[node name="Leg2" type="Sprite2D" parent="Player/Body/Leg2Container"]
+position = Vector2(0, -2.63409)
+texture = ExtResource("5_35htc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
+libraries = {
+"": SubResource("AnimationLibrary_bwvwr")
+}
+autoplay = "Idle"
+
+[node name="AnimationTree" type="AnimationTree" parent="Player"]
+libraries = {
+"": SubResource("AnimationLibrary_bwvwr")
+}
+tree_root = SubResource("AnimationNodeBlendSpace1D_4ldse")
+anim_player = NodePath("../AnimationPlayer")
+parameters/blend_position = 0.5

@@ -1,0 +1,111 @@
+[gd_scene load_steps=4 format=3 uid="uid://dt58wfy0bn1bv"]
+
+[ext_resource type="Script" path="res://main_menu.gd" id="1_ho443"]
+[ext_resource type="PackedScene" uid="uid://cd883oshwdox5" path="res://level_button.tscn" id="2_a8igp"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_e1ee5"]
+font_size = 64
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -66.0
+offset_right = -3.0
+offset_bottom = -66.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ho443")
+
+[node name="MainMenu" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="StartButton" type="Button" parent="MainMenu"]
+layout_mode = 0
+offset_left = 443.0
+offset_top = 314.0
+offset_right = 861.0
+offset_bottom = 407.0
+text = "Start
+"
+
+[node name="ExitButton" type="Button" parent="MainMenu"]
+layout_mode = 0
+offset_left = 452.0
+offset_top = 570.0
+offset_right = 856.0
+offset_bottom = 637.0
+text = "Exit"
+
+[node name="LevelSelectButton" type="Button" parent="MainMenu"]
+layout_mode = 0
+offset_left = 450.0
+offset_top = 434.0
+offset_right = 848.0
+offset_bottom = 544.0
+text = "Level Select"
+
+[node name="LevelSelect" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HFlowContainer" type="HFlowContainer" parent="LevelSelect"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 454.0
+offset_right = 1290.0
+offset_bottom = 559.0
+alignment = 1
+
+[node name="Level1Button" parent="LevelSelect/HFlowContainer" instance=ExtResource("2_a8igp")]
+layout_mode = 2
+level_number = 1
+
+[node name="Level1Button2" parent="LevelSelect/HFlowContainer" instance=ExtResource("2_a8igp")]
+layout_mode = 2
+level_number = 2
+
+[node name="Level1Button3" parent="LevelSelect/HFlowContainer" instance=ExtResource("2_a8igp")]
+layout_mode = 2
+level_number = 3
+
+[node name="Level1Button4" parent="LevelSelect/HFlowContainer" instance=ExtResource("2_a8igp")]
+layout_mode = 2
+level_number = 4
+
+[node name="Level1Button5" parent="LevelSelect/HFlowContainer" instance=ExtResource("2_a8igp")]
+layout_mode = 2
+level_number = 5
+
+[node name="LevelSelectBackButton" type="Button" parent="LevelSelect"]
+layout_mode = 0
+offset_left = 503.0
+offset_top = 511.0
+offset_right = 718.0
+offset_bottom = 622.0
+text = "Back"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 375.0
+offset_top = 81.0
+offset_right = 868.0
+offset_bottom = 207.0
+text = "WashingLoaded"
+label_settings = SubResource("LabelSettings_e1ee5")
+
+[connection signal="pressed" from="MainMenu/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MainMenu/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="MainMenu/LevelSelectButton" to="." method="_on_level_select_button_pressed"]
+[connection signal="pressed" from="LevelSelect/HFlowContainer/Level1Button" to="LevelSelect/HFlowContainer/Level1Button" method="_on_pressed"]
+[connection signal="pressed" from="LevelSelect/HFlowContainer/Level1Button2" to="LevelSelect/HFlowContainer/Level1Button2" method="_on_pressed"]
+[connection signal="pressed" from="LevelSelect/HFlowContainer/Level1Button3" to="LevelSelect/HFlowContainer/Level1Button3" method="_on_pressed"]
+[connection signal="pressed" from="LevelSelect/HFlowContainer/Level1Button4" to="LevelSelect/HFlowContainer/Level1Button4" method="_on_pressed"]
+[connection signal="pressed" from="LevelSelect/HFlowContainer/Level1Button5" to="LevelSelect/HFlowContainer/Level1Button5" method="_on_pressed"]
+[connection signal="pressed" from="LevelSelect/LevelSelectBackButton" to="." method="_on_level_select_back_button_pressed"]
